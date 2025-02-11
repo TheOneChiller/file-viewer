@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just for You</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            background-color: pink;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .yes {
+            background-color: red;
+            color: white;
+        }
+        .no {
+            background-color: white;
+            color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1>Will you be my Valentine? ❤️</h1>
+    <div class="buttons">
+        <button class="yes" onclick="yesResponse()">Yes</button>
+        <button class="no" id="noButton" onmouseover="moveNo()">No</button>
+    </div>
+
+    <script>
+        function yesResponse() {
+            alert('Yay! I love you! ❤️');
+        }
+        
+        function moveNo() {
+            var x = Math.random() * window.innerWidth * 0.7;
+            var y = Math.random() * window.innerHeight * 0.7;
+            document.getElementById("noButton").style.left = x + 'px';
+            document.getElementById("noButton").style.top = y + 'px';
+        }
+    </script>
+</body>
+</html>
