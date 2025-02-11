@@ -40,18 +40,27 @@
         .slideshow {
             width: 80%;
             max-width: 600px;
-            overflow: hidden;
             position: relative;
             margin-top: 20px;
             border-radius: 15px;
+            background-color: rgba(255, 182, 193, 0.5);
+            padding: 20px;
         }
         .slides {
-            display: flex;
-            transition: transform 1s ease-in-out;
+            display: none;
+            text-align: center;
+            position: absolute;
+            width: 100%;
         }
         .slides img {
             width: 100%;
             border-radius: 15px;
+        }
+        .message {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            color: darkred;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -63,12 +72,25 @@
     </div>
 
     <div class="slideshow">
-        <div class="slides" id="slideContainer">
+        <div class="slides" id="slide1">
             <img src="image1.jpg" alt="Us together">
+            <div class="message">"Every moment with you is special."</div>
+        </div>
+        <div class="slides" id="slide2">
             <img src="image2.jpg" alt="Cute moment">
+            <div class="message">"You're the best thing in my life."</div>
+        </div>
+        <div class="slides" id="slide3">
             <img src="image3.jpg" alt="Smiling">
+            <div class="message">"I love your smile so much!"</div>
+        </div>
+        <div class="slides" id="slide4">
             <img src="image4.jpg" alt="On a trip">
+            <div class="message">"Every adventure is better with you."</div>
+        </div>
+        <div class="slides" id="slide5">
             <img src="image5.jpg" alt="Dressed up">
+            <div class="message">"Will you be my Valentine? ❤️"</div>
         </div>
     </div>
 
@@ -85,15 +107,17 @@
         }
 
         let index = 0;
-        function slideShow() {
-            const slides = document.getElementById("slideContainer");
-            index++;
-            if (index >= slides.children.length) {
-                index = 0;
+        function showSlides() {
+            let slides = document.getElementsByClassName("slides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
             }
-            slides.style.transform = `translateX(-${index * 100}%)`;
+            index++;
+            if (index > slides.length) { index = 1; }
+            slides[index - 1].style.display = "block";
+            setTimeout(showSlides, 4000);
         }
-        setInterval(slideShow, 3000);
+        showSlides();
     </script>
 </body>
 </html>
